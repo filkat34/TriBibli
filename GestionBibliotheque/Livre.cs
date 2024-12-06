@@ -24,7 +24,7 @@ namespace GestionBibliotheque
 
         public override string ToString()
         {
-            return auteur + ". " + titre +  " " + statut;
+            return auteur + ". " + titre + ' ' + '[' + statut + ']';
         }
 
         public string GetTitre()

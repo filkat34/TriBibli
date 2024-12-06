@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -12,7 +13,7 @@ namespace GestionBibliotheque
 {
     public partial class Main : Form
     {
-        // Liste de livres
+        // Création de la collection de livres
         private List<Livre> ListeLivres = new List<Livre>();
         
         // Nom du fichier de sérialisation
@@ -25,7 +26,7 @@ namespace GestionBibliotheque
         private void Form1_Load(object sender, EventArgs e)
         {
             // Positionner le combobox par défaut au statut "Conserver"
-            comboBox1.SelectedIndex = 0;
+            comboBoxStatut.SelectedIndex = 0;
 
             // récupérer la sauvegarde des contacts, si elle existe
             Object recupLivres = Serialise.Recup(nomFic);
@@ -40,9 +41,18 @@ namespace GestionBibliotheque
 
         private void MajListeLivres()
         {
+            // trier la collection en comparant les noms des auteurs
+            ListeLivres.Sort((auteur1, auteur2) => auteur1.GetAuteur().CompareTo(auteur2.GetAuteur()));
+
+            // lier la ListBox avec lesContacts pour la remplir
             BindingList<Livre> bdlLivres = new BindingList<Livre>(ListeLivres);
             listBox1.DataSource = bdlLivres;
+
+            // sauver la liste dans le fichier
             Serialise.Sauve(nomFic, ListeLivres);
+
+            // compteur du nombre de livres dans la bibliothèque
+            LblNumberofBooks.Text = ListeLivres.Count.ToString();
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)
@@ -60,24 +70,6 @@ namespace GestionBibliotheque
 
         }
 
-        private void button3_Click(object sender, EventArgs e)
-        {
-            if (listBox1.SelectedIndex != -1)
-            {
-                if (MessageBox.Show("Voulez-vous vraiment supprimer ce livre ?", "Confirmation", MessageBoxButtons.YesNo) == (DialogResult.Yes))
-                {
-                    ListeLivres.RemoveAt(listBox1.SelectedIndex);
-                    MajListeLivres();
-                }
-            }
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-            Livre unLivre = ListeLivres[listBox1.SelectedIndex];
-            unLivre.SetStatut("[Donner]");
-            MajListeLivres();
-        }
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -92,17 +84,6 @@ namespace GestionBibliotheque
         private void groupBox3_Enter(object sender, EventArgs e)
         {
 
-        }
-
-        private void button7_Click(object sender, EventArgs e)
-        {
-            string unTitre = textBoxTitre.Text;
-            string unAuteur = textBoxAuteur.Text.ToUpper();
-            string unStatut = '[' + comboBox1.SelectedItem.ToString() + ']';
-            ListeLivres.Add(new Livre(unTitre, unAuteur, unStatut));
-            textBoxTitre.Clear();
-            textBoxAuteur.Clear();
-            MajListeLivres();
         }
 
         private void textBoxAuteur_TextChanged(object sender, EventArgs e)
@@ -120,18 +101,64 @@ namespace GestionBibliotheque
           
         }
 
-        private void button6_Click(object sender, EventArgs e)
+        private void BtnAddBook_Click(object sender, EventArgs e)
         {
-            Livre unLivre = ListeLivres[listBox1.SelectedIndex];
-            unLivre.SetStatut("[Conserver]");
+            // Ajoute un nouveau livre à la collection
+            string unTitre = textBoxTitre.Text;
+            string unAuteur = textBoxAuteur.Text.ToUpper();
+            string unStatut = comboBoxStatut.SelectedItem.ToString();
+            ListeLivres.Add(new Livre(unTitre, unAuteur, unStatut));
+
+            // Vide le contenu des textbox après l'ajout
+            textBoxTitre.Clear();
+            textBoxAuteur.Clear();
+
+            // Mise à jour de la listbox
+
             MajListeLivres();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void BtnDeleteBook_Click(object sender, EventArgs e)
         {
+            // Supprime le livre sélectionné de la collection
+            if (listBox1.SelectedIndex != -1)
+            {
+                if (MessageBox.Show("Voulez-vous vraiment supprimer ce livre ?", "Confirmation", MessageBoxButtons.YesNo) == (DialogResult.Yes))
+                {
+                    ListeLivres.RemoveAt(listBox1.SelectedIndex);
+                    MajListeLivres();
+                }
+            }
+        }
+
+        private void BtnKeepBook_Click(object sender, EventArgs e)
+        {
+            // Change le statut du lire à "Conserver"
             Livre unLivre = ListeLivres[listBox1.SelectedIndex];
-            unLivre.SetStatut("[Vendre]");
+            unLivre.SetStatut("Conserver");
             MajListeLivres();
         }
+
+        private void BtnGiveBook_Click(object sender, EventArgs e)
+        {
+            // Change le statut du lire à "Donner"
+            Livre unLivre = ListeLivres[listBox1.SelectedIndex];
+            unLivre.SetStatut("Donner");
+            MajListeLivres();
+        }
+
+        private void BtnBookSell_Click(object sender, EventArgs e)
+        {
+            // Change le statut du lire à "Vendre"
+            Livre unLivre = ListeLivres[listBox1.SelectedIndex];
+            unLivre.SetStatut("Vendre");
+            MajListeLivres();
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
     }
 }

@@ -93,6 +93,16 @@ namespace GestionBibliotheque.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap gift_icon_34411 {
+            get {
+                object obj = ResourceManager.GetObject("gift-icon_34411", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap gui_action_delete_254x256 {
             get {
                 object obj = ResourceManager.GetObject("gui-action-delete.254x256", resourceCulture);
@@ -136,6 +146,16 @@ namespace GestionBibliotheque.Properties {
         internal static System.Drawing.Bitmap plus_256x256 {
             get {
                 object obj = ResourceManager.GetObject("plus.256x256", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap recycle_77943 {
+            get {
+                object obj = ResourceManager.GetObject("recycle_77943", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

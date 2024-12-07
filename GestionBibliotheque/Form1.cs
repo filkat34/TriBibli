@@ -13,10 +13,10 @@ namespace GestionBibliotheque
 {
     public partial class Main : Form
     {
-        // Création de la collection de livres
+        // création de la collection de livres
         private List<Livre> ListeLivres = new List<Livre>();
         
-        // Nom du fichier de sérialisation
+        // nom du fichier de sérialisation
         private String nomFic = "sauvLivres";
 
         public Main()
@@ -25,7 +25,7 @@ namespace GestionBibliotheque
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-            // Positionner le combobox par défaut au statut "Conserver"
+            // positionner le combobox par défaut sur "Conserver"
             comboBoxStatut.SelectedIndex = 0;
 
             // récupérer la sauvegarde des contacts, si elle existe
@@ -53,68 +53,34 @@ namespace GestionBibliotheque
 
             // compteur du nombre de livres dans la bibliothèque
             LblNumberofBooks.Text = ListeLivres.Count.ToString();
+
+            // compteur du nombre de livres à vendre dans la bibliothèque
+            LblNbBooksToSell.Text = ListeLivres.Count(livre => livre.GetStatut() == "Vendre").ToString();
+
+            // compteur du nombre de livres à donner dans la bibliothèque
+            LblNbBooksToGive.Text = ListeLivres.Count(livre => livre.GetStatut() == "Donner").ToString();
+
+            // compteur du nombre de livres à recycler dans la bibliothèque
+            LblNbBooksToRecycle.Text = ListeLivres.Count(livre => livre.GetStatut() == "Recycler").ToString();
         }
 
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox2_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-           
-        }
-
-        private void groupBox3_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBoxAuteur_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-          
-        }
 
         private void BtnAddBook_Click(object sender, EventArgs e)
         {
-            // Ajoute un nouveau livre à la collection
+            // ajoute un nouveau livre à la collection
             string unTitre = textBoxTitre.Text;
             string unAuteur = textBoxAuteur.Text.ToUpper();
             string unStatut = comboBoxStatut.SelectedItem.ToString();
-            ListeLivres.Add(new Livre(unTitre, unAuteur, unStatut));
+            Livre nouvLivre = new Livre(unTitre, unAuteur, unStatut);
+            ListeLivres.Add(nouvLivre);
 
-            // Vide le contenu des textbox après l'ajout
+            
+
+            // vide le contenu des textbox après l'ajout
             textBoxTitre.Clear();
             textBoxAuteur.Clear();
 
-            // Mise à jour de la listbox
-
+            // mise à jour de la listbox
             MajListeLivres();
         }
 
@@ -155,10 +121,12 @@ namespace GestionBibliotheque
             MajListeLivres();
         }
 
-        private void panel2_Paint(object sender, PaintEventArgs e)
+        private void BtnRecycleBook_Click(object sender, EventArgs e)
         {
-
+            // Change le statut du lire à "Recycler"
+            Livre unLivre = ListeLivres[listBox1.SelectedIndex];
+            unLivre.SetStatut("Recycler");
+            MajListeLivres();
         }
-
     }
 }

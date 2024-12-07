@@ -37,7 +37,7 @@ namespace GestionBibliotheque
             return auteur;
         }
 
-        public string GetAdonner() 
+        public string GetStatut() 
         {
            return statut;
         }

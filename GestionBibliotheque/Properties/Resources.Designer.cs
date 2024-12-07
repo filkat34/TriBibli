@@ -63,6 +63,36 @@ namespace GestionBibliotheque.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _1486503744_backspace_clean_clear_delete_remove_erase_81258 {
+            get {
+                object obj = ResourceManager.GetObject("1486503744-backspace-clean-clear-delete-remove-erase_81258", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _1486564391_compose_81525 {
+            get {
+                object obj = ResourceManager.GetObject("1486564391-compose_81525", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Accept_37154 {
+            get {
+                object obj = ResourceManager.GetObject("Accept_37154", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap award_gift_reward_social_rating_media_queen_vip_gift_256x256 {
             get {
                 object obj = ResourceManager.GetObject("award-gift-reward-social-rating-media-queen-vip-gift.256x256", resourceCulture);
@@ -93,6 +123,16 @@ namespace GestionBibliotheque.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Clear_37294 {
+            get {
+                object obj = ResourceManager.GetObject("Clear_37294", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap gift_icon_34411 {
             get {
                 object obj = ResourceManager.GetObject("gift-icon_34411", resourceCulture);
@@ -113,9 +153,29 @@ namespace GestionBibliotheque.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap gui_eraser_icon_157160 {
+            get {
+                object obj = ResourceManager.GetObject("gui_eraser_icon_157160", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap hand_coin_euro_finance_icon_125508 {
             get {
                 object obj = ResourceManager.GetObject("hand_coin_euro_finance_icon_125508", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ic_backspace_128_28206 {
+            get {
+                object obj = ResourceManager.GetObject("ic_backspace_128_28206", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -146,6 +206,16 @@ namespace GestionBibliotheque.Properties {
         internal static System.Drawing.Bitmap plus_256x256 {
             get {
                 object obj = ResourceManager.GetObject("plus.256x256", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap process_accept_icon_icons_com_52369 {
+            get {
+                object obj = ResourceManager.GetObject("process-accept_icon-icons.com_52369", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

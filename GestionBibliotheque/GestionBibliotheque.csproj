@@ -112,5 +112,26 @@
   <ItemGroup>
     <None Include="Resources\gift-icon_34411.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1486564391-compose_81525.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Accept_37154.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\process-accept_icon-icons.com_52369.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\gui_eraser_icon_157160.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Clear_37294.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1486503744-backspace-clean-clear-delete-remove-erase_81258.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_backspace_128_28206.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Text;
 using System.Linq;
 using System.Net.NetworkInformation;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace GestionBibliotheque
 {
@@ -45,11 +48,11 @@ namespace GestionBibliotheque
             // trier la collection en comparant les noms des auteurs
             ListeLivres.Sort((auteur1, auteur2) => auteur1.GetAuteur().CompareTo(auteur2.GetAuteur()));
 
-            // lier la ListBox avec lesContacts pour la remplir
+            // lier la ListBox avec ListeLivres pour la remplir
             BindingList<Livre> bdlLivres = new BindingList<Livre>(ListeLivres);
             listBox1.DataSource = bdlLivres;
 
-            // sauver la liste dans le fichier
+            // sauvegarder la liste dans le fichier
             Serialise.Sauve(nomFic, ListeLivres);
 
             // compteur du nombre de livres dans la bibliothèque
@@ -137,7 +140,7 @@ namespace GestionBibliotheque
 
         private void BtnBookSell_Click(object sender, EventArgs e)
         {
-            // Change le statut du lire à "Vendre"
+            // Change le statut du lire à "Vendre
             Livre unLivre = ListeLivres[listBox1.SelectedIndex];
             unLivre.SetStatut("Vendre");
             MajListeLivres();
@@ -153,22 +156,28 @@ namespace GestionBibliotheque
 
         private void BtnApplyBookModification_Click(object sender, EventArgs e)
         {
-            string unTitre = textBoxTitre.Text;
-            string unAuteur = textBoxAuteur.Text;
-            string unStatut = comboBoxStatut.SelectedItem.ToString(); 
-            Livre unLivre = ListeLivres[listBox1.SelectedIndex];
-            unLivre.SetAuteur(textBoxAuteur.Text);
-            unLivre.SetTitre(textBoxTitre.Text);
-            unLivre.SetStatut(comboBoxStatut.Text);
-            MajListeLivres();
+            if (listBox1.SelectedIndex != -1)
+            {
+                string unTitre = textBoxTitre.Text;
+                string unAuteur = textBoxAuteur.Text;
+                string unStatut = comboBoxStatut.SelectedItem.ToString();
+                Livre unLivre = ListeLivres[listBox1.SelectedIndex];
+                unLivre.SetAuteur(textBoxAuteur.Text);
+                unLivre.SetTitre(textBoxTitre.Text);
+                unLivre.SetStatut(comboBoxStatut.Text);
+                MajListeLivres();
+            }
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Livre unLivre = ListeLivres[listBox1.SelectedIndex];
-            textBoxAuteur.Text = unLivre.GetAuteur().ToString();
-            textBoxTitre.Text = unLivre.GetTitre().ToString();
-            comboBoxStatut.Text = unLivre.GetStatut().ToString();
+            if (listBox1.SelectedIndex != -1)
+            {
+                Livre unLivre = ListeLivres[listBox1.SelectedIndex];
+                textBoxAuteur.Text = unLivre.GetAuteur().ToString();
+                textBoxTitre.Text = unLivre.GetTitre().ToString();
+                comboBoxStatut.Text = unLivre.GetStatut().ToString();
+            }
         }
 
         private void BtnClearTextboxes_Click(object sender, EventArgs e)
@@ -180,10 +189,39 @@ namespace GestionBibliotheque
 
         private void TxtBoxSearch_TextChanged(object sender, EventArgs e)
         {
-            if (TxtBoxSearch.Text != null)
+            if (string.IsNullOrEmpty(TxtBoxSearch.Text) == false)
             {
-                
+
+                textBoxTitre.Clear();
+                textBoxAuteur.Clear();
+                listBox1.DataSource = null;
+                listBox1.Items.Clear();
+                List<Livre> RechercheLivres = new List<Livre>();
+                ListeLivres.Sort((auteur1, auteur2) => auteur1.GetAuteur().CompareTo(auteur2.GetAuteur()));
+                BindingList<Livre> bdlRechercheLivres = new BindingList<Livre>(RechercheLivres);
+                listBox1.DataSource = bdlRechercheLivres;
+
+                foreach (Livre livre in ListeLivres)
+                {
+                    string auteur = livre.GetAuteur().ToString();
+                    string titre = livre.GetTitre().ToString();
+
+                    if (auteur.ToLower().Contains(TxtBoxSearch.Text.ToLower()) | titre.ToLower().Contains(TxtBoxSearch.Text.ToLower()))
+                    {
+                        bdlRechercheLivres.Add(livre);
+                    }
+                }
             }
+
+            if (TxtBoxSearch.Text == "")
+            {
+                MajListeLivres();
+            }
+        }
+
+        private void BtnEraseSearch_Click(object sender, EventArgs e)
+        {
+            TxtBoxSearch.Clear();
         }
     }
 }

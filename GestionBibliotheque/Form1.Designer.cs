@@ -38,26 +38,27 @@
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.BtnRecycleBook = new System.Windows.Forms.Button();
+            this.BtnBookSell = new System.Windows.Forms.Button();
+            this.BtnDeleteBook = new System.Windows.Forms.Button();
+            this.BtnGiveBook = new System.Windows.Forms.Button();
+            this.BtnKeepBook = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.LblNbBooksToRecycle = new System.Windows.Forms.Label();
             this.LblNbBooksToGive = new System.Windows.Forms.Label();
             this.LblNbBooksToSell = new System.Windows.Forms.Label();
             this.LblNumberofBooks = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.BtnClearTextboxes = new System.Windows.Forms.Button();
+            this.BtnApplyBookModification = new System.Windows.Forms.Button();
+            this.BtnAddBook = new System.Windows.Forms.Button();
             this.comboBoxStatut = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.textBoxTitre = new System.Windows.Forms.TextBox();
             this.textBoxAuteur = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.BtnClearTextboxes = new System.Windows.Forms.Button();
-            this.BtnApplyBookModification = new System.Windows.Forms.Button();
-            this.BtnAddBook = new System.Windows.Forms.Button();
-            this.BtnRecycleBook = new System.Windows.Forms.Button();
-            this.BtnBookSell = new System.Windows.Forms.Button();
-            this.BtnDeleteBook = new System.Windows.Forms.Button();
-            this.BtnGiveBook = new System.Windows.Forms.Button();
-            this.BtnKeepBook = new System.Windows.Forms.Button();
+            this.BtnEraseSearch = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -67,7 +68,7 @@
             // 
             // listBox1
             // 
-            this.listBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listBox1.FormattingEnabled = true;
             this.listBox1.HorizontalScrollbar = true;
             this.listBox1.ItemHeight = 16;
@@ -80,6 +81,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.BtnEraseSearch);
             this.groupBox1.Controls.Add(this.TxtBoxSearch);
             this.groupBox1.Location = new System.Drawing.Point(12, 149);
             this.groupBox1.Name = "groupBox1";
@@ -92,7 +94,7 @@
             // 
             this.TxtBoxSearch.Location = new System.Drawing.Point(7, 20);
             this.TxtBoxSearch.Name = "TxtBoxSearch";
-            this.TxtBoxSearch.Size = new System.Drawing.Size(378, 20);
+            this.TxtBoxSearch.Size = new System.Drawing.Size(320, 20);
             this.TxtBoxSearch.TabIndex = 0;
             this.TxtBoxSearch.TextChanged += new System.EventHandler(this.TxtBoxSearch_TextChanged);
             // 
@@ -162,6 +164,62 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(46, 232);
             this.panel1.TabIndex = 3;
+            // 
+            // BtnRecycleBook
+            // 
+            this.BtnRecycleBook.BackgroundImage = global::GestionBibliotheque.Properties.Resources.recycle_77943;
+            this.BtnRecycleBook.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.BtnRecycleBook.Location = new System.Drawing.Point(0, 142);
+            this.BtnRecycleBook.Name = "BtnRecycleBook";
+            this.BtnRecycleBook.Size = new System.Drawing.Size(40, 40);
+            this.BtnRecycleBook.TabIndex = 10;
+            this.BtnRecycleBook.UseVisualStyleBackColor = true;
+            this.BtnRecycleBook.Click += new System.EventHandler(this.BtnRecycleBook_Click);
+            // 
+            // BtnBookSell
+            // 
+            this.BtnBookSell.BackgroundImage = global::GestionBibliotheque.Properties.Resources.hand_coin_euro_finance_icon_125508;
+            this.BtnBookSell.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.BtnBookSell.Location = new System.Drawing.Point(0, 93);
+            this.BtnBookSell.Name = "BtnBookSell";
+            this.BtnBookSell.Size = new System.Drawing.Size(40, 40);
+            this.BtnBookSell.TabIndex = 10;
+            this.BtnBookSell.UseVisualStyleBackColor = true;
+            this.BtnBookSell.Click += new System.EventHandler(this.BtnBookSell_Click);
+            // 
+            // BtnDeleteBook
+            // 
+            this.BtnDeleteBook.BackgroundImage = global::GestionBibliotheque.Properties.Resources.gui_action_delete_254x256;
+            this.BtnDeleteBook.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.BtnDeleteBook.Location = new System.Drawing.Point(0, 188);
+            this.BtnDeleteBook.Name = "BtnDeleteBook";
+            this.BtnDeleteBook.Size = new System.Drawing.Size(40, 40);
+            this.BtnDeleteBook.TabIndex = 10;
+            this.BtnDeleteBook.UseVisualStyleBackColor = true;
+            this.BtnDeleteBook.Click += new System.EventHandler(this.BtnDeleteBook_Click);
+            // 
+            // BtnGiveBook
+            // 
+            this.BtnGiveBook.BackgroundImage = global::GestionBibliotheque.Properties.Resources.gift_icon_34411;
+            this.BtnGiveBook.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.BtnGiveBook.Location = new System.Drawing.Point(0, 46);
+            this.BtnGiveBook.Name = "BtnGiveBook";
+            this.BtnGiveBook.Size = new System.Drawing.Size(40, 40);
+            this.BtnGiveBook.TabIndex = 10;
+            this.BtnGiveBook.UseVisualStyleBackColor = true;
+            this.BtnGiveBook.Click += new System.EventHandler(this.BtnGiveBook_Click);
+            // 
+            // BtnKeepBook
+            // 
+            this.BtnKeepBook.BackgroundImage = global::GestionBibliotheque.Properties.Resources.bookshelf_icon_icons_com_54414;
+            this.BtnKeepBook.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.BtnKeepBook.Location = new System.Drawing.Point(0, 0);
+            this.BtnKeepBook.Name = "BtnKeepBook";
+            this.BtnKeepBook.Size = new System.Drawing.Size(40, 40);
+            this.BtnKeepBook.TabIndex = 10;
+            this.BtnKeepBook.Tag = "";
+            this.BtnKeepBook.UseVisualStyleBackColor = true;
+            this.BtnKeepBook.Click += new System.EventHandler(this.BtnKeepBook_Click);
             // 
             // panel2
             // 
@@ -233,6 +291,40 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Ajouter/Modifier";
             // 
+            // BtnClearTextboxes
+            // 
+            this.BtnClearTextboxes.BackgroundImage = global::GestionBibliotheque.Properties.Resources.ic_backspace_128_28206;
+            this.BtnClearTextboxes.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.BtnClearTextboxes.Location = new System.Drawing.Point(252, 83);
+            this.BtnClearTextboxes.Name = "BtnClearTextboxes";
+            this.BtnClearTextboxes.Size = new System.Drawing.Size(40, 40);
+            this.BtnClearTextboxes.TabIndex = 19;
+            this.BtnClearTextboxes.UseVisualStyleBackColor = true;
+            this.BtnClearTextboxes.Click += new System.EventHandler(this.BtnClearTextboxes_Click);
+            // 
+            // BtnApplyBookModification
+            // 
+            this.BtnApplyBookModification.BackgroundImage = global::GestionBibliotheque.Properties.Resources._1486564391_compose_81525;
+            this.BtnApplyBookModification.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.BtnApplyBookModification.Location = new System.Drawing.Point(345, 83);
+            this.BtnApplyBookModification.Name = "BtnApplyBookModification";
+            this.BtnApplyBookModification.Size = new System.Drawing.Size(40, 40);
+            this.BtnApplyBookModification.TabIndex = 18;
+            this.BtnApplyBookModification.UseVisualStyleBackColor = true;
+            this.BtnApplyBookModification.Click += new System.EventHandler(this.BtnApplyBookModification_Click);
+            // 
+            // BtnAddBook
+            // 
+            this.BtnAddBook.BackColor = System.Drawing.Color.Transparent;
+            this.BtnAddBook.BackgroundImage = global::GestionBibliotheque.Properties.Resources.plus_256x256;
+            this.BtnAddBook.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.BtnAddBook.Location = new System.Drawing.Point(299, 83);
+            this.BtnAddBook.Name = "BtnAddBook";
+            this.BtnAddBook.Size = new System.Drawing.Size(40, 40);
+            this.BtnAddBook.TabIndex = 17;
+            this.BtnAddBook.UseVisualStyleBackColor = false;
+            this.BtnAddBook.Click += new System.EventHandler(this.BtnAddBook_Click);
+            // 
             // comboBoxStatut
             // 
             this.comboBoxStatut.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -287,95 +379,16 @@
             this.label4.TabIndex = 11;
             this.label4.Text = "Titre";
             // 
-            // BtnClearTextboxes
+            // BtnEraseSearch
             // 
-            this.BtnClearTextboxes.BackgroundImage = global::GestionBibliotheque.Properties.Resources.ic_backspace_128_28206;
-            this.BtnClearTextboxes.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.BtnClearTextboxes.Location = new System.Drawing.Point(252, 83);
-            this.BtnClearTextboxes.Name = "BtnClearTextboxes";
-            this.BtnClearTextboxes.Size = new System.Drawing.Size(40, 40);
-            this.BtnClearTextboxes.TabIndex = 19;
-            this.BtnClearTextboxes.UseVisualStyleBackColor = true;
-            this.BtnClearTextboxes.Click += new System.EventHandler(this.BtnClearTextboxes_Click);
-            // 
-            // BtnApplyBookModification
-            // 
-            this.BtnApplyBookModification.BackgroundImage = global::GestionBibliotheque.Properties.Resources._1486564391_compose_81525;
-            this.BtnApplyBookModification.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.BtnApplyBookModification.Location = new System.Drawing.Point(345, 83);
-            this.BtnApplyBookModification.Name = "BtnApplyBookModification";
-            this.BtnApplyBookModification.Size = new System.Drawing.Size(40, 40);
-            this.BtnApplyBookModification.TabIndex = 18;
-            this.BtnApplyBookModification.UseVisualStyleBackColor = true;
-            this.BtnApplyBookModification.Click += new System.EventHandler(this.BtnApplyBookModification_Click);
-            // 
-            // BtnAddBook
-            // 
-            this.BtnAddBook.BackColor = System.Drawing.Color.Transparent;
-            this.BtnAddBook.BackgroundImage = global::GestionBibliotheque.Properties.Resources.plus_256x256;
-            this.BtnAddBook.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.BtnAddBook.Location = new System.Drawing.Point(299, 83);
-            this.BtnAddBook.Name = "BtnAddBook";
-            this.BtnAddBook.Size = new System.Drawing.Size(40, 40);
-            this.BtnAddBook.TabIndex = 17;
-            this.BtnAddBook.UseVisualStyleBackColor = false;
-            this.BtnAddBook.Click += new System.EventHandler(this.BtnAddBook_Click);
-            // 
-            // BtnRecycleBook
-            // 
-            this.BtnRecycleBook.BackgroundImage = global::GestionBibliotheque.Properties.Resources.recycle_77943;
-            this.BtnRecycleBook.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.BtnRecycleBook.Location = new System.Drawing.Point(0, 142);
-            this.BtnRecycleBook.Name = "BtnRecycleBook";
-            this.BtnRecycleBook.Size = new System.Drawing.Size(40, 40);
-            this.BtnRecycleBook.TabIndex = 10;
-            this.BtnRecycleBook.UseVisualStyleBackColor = true;
-            this.BtnRecycleBook.Click += new System.EventHandler(this.BtnRecycleBook_Click);
-            // 
-            // BtnBookSell
-            // 
-            this.BtnBookSell.BackgroundImage = global::GestionBibliotheque.Properties.Resources.hand_coin_euro_finance_icon_125508;
-            this.BtnBookSell.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.BtnBookSell.Location = new System.Drawing.Point(0, 93);
-            this.BtnBookSell.Name = "BtnBookSell";
-            this.BtnBookSell.Size = new System.Drawing.Size(40, 40);
-            this.BtnBookSell.TabIndex = 10;
-            this.BtnBookSell.UseVisualStyleBackColor = true;
-            this.BtnBookSell.Click += new System.EventHandler(this.BtnBookSell_Click);
-            // 
-            // BtnDeleteBook
-            // 
-            this.BtnDeleteBook.BackgroundImage = global::GestionBibliotheque.Properties.Resources.gui_action_delete_254x256;
-            this.BtnDeleteBook.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.BtnDeleteBook.Location = new System.Drawing.Point(0, 188);
-            this.BtnDeleteBook.Name = "BtnDeleteBook";
-            this.BtnDeleteBook.Size = new System.Drawing.Size(40, 40);
-            this.BtnDeleteBook.TabIndex = 10;
-            this.BtnDeleteBook.UseVisualStyleBackColor = true;
-            this.BtnDeleteBook.Click += new System.EventHandler(this.BtnDeleteBook_Click);
-            // 
-            // BtnGiveBook
-            // 
-            this.BtnGiveBook.BackgroundImage = global::GestionBibliotheque.Properties.Resources.gift_icon_34411;
-            this.BtnGiveBook.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.BtnGiveBook.Location = new System.Drawing.Point(0, 46);
-            this.BtnGiveBook.Name = "BtnGiveBook";
-            this.BtnGiveBook.Size = new System.Drawing.Size(40, 40);
-            this.BtnGiveBook.TabIndex = 10;
-            this.BtnGiveBook.UseVisualStyleBackColor = true;
-            this.BtnGiveBook.Click += new System.EventHandler(this.BtnGiveBook_Click);
-            // 
-            // BtnKeepBook
-            // 
-            this.BtnKeepBook.BackgroundImage = global::GestionBibliotheque.Properties.Resources.bookshelf_icon_icons_com_54414;
-            this.BtnKeepBook.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.BtnKeepBook.Location = new System.Drawing.Point(0, 0);
-            this.BtnKeepBook.Name = "BtnKeepBook";
-            this.BtnKeepBook.Size = new System.Drawing.Size(40, 40);
-            this.BtnKeepBook.TabIndex = 10;
-            this.BtnKeepBook.Tag = "";
-            this.BtnKeepBook.UseVisualStyleBackColor = true;
-            this.BtnKeepBook.Click += new System.EventHandler(this.BtnKeepBook_Click);
+            this.BtnEraseSearch.BackgroundImage = global::GestionBibliotheque.Properties.Resources.ic_backspace_128_28206;
+            this.BtnEraseSearch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.BtnEraseSearch.Location = new System.Drawing.Point(345, 12);
+            this.BtnEraseSearch.Name = "BtnEraseSearch";
+            this.BtnEraseSearch.Size = new System.Drawing.Size(40, 40);
+            this.BtnEraseSearch.TabIndex = 1;
+            this.BtnEraseSearch.UseVisualStyleBackColor = true;
+            this.BtnEraseSearch.Click += new System.EventHandler(this.BtnEraseSearch_Click);
             // 
             // Main
             // 
@@ -436,5 +449,6 @@
         private System.Windows.Forms.TextBox TxtBoxSearch;
         private System.Windows.Forms.Button BtnApplyBookModification;
         private System.Windows.Forms.Button BtnClearTextboxes;
+        private System.Windows.Forms.Button BtnEraseSearch;
     }
 }

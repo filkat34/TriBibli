@@ -31,12 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.BtnEraseSearch = new System.Windows.Forms.Button();
             this.TxtBoxSearch = new System.Windows.Forms.TextBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.radioButton4 = new System.Windows.Forms.RadioButton();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.BtnRecycleBook = new System.Windows.Forms.Button();
             this.BtnBookSell = new System.Windows.Forms.Button();
@@ -58,12 +54,17 @@
             this.textBoxAuteur = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.BtnEraseSearch = new System.Windows.Forms.Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.BtnRVendre = new System.Windows.Forms.RadioButton();
+            this.BtnRConserver = new System.Windows.Forms.RadioButton();
+            this.BtnRRecycler = new System.Windows.Forms.RadioButton();
+            this.BtnRDonner = new System.Windows.Forms.RadioButton();
+            this.BtnRTous = new System.Windows.Forms.RadioButton();
             this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // listBox1
@@ -74,7 +75,7 @@
             this.listBox1.ItemHeight = 16;
             this.listBox1.Location = new System.Drawing.Point(12, 265);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(349, 228);
+            this.listBox1.Size = new System.Drawing.Size(350, 228);
             this.listBox1.Sorted = true;
             this.listBox1.TabIndex = 0;
             this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
@@ -90,68 +91,24 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Rechercher";
             // 
+            // BtnEraseSearch
+            // 
+            this.BtnEraseSearch.BackgroundImage = global::GestionBibliotheque.Properties.Resources.ic_backspace_128_28206;
+            this.BtnEraseSearch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.BtnEraseSearch.Location = new System.Drawing.Point(345, 9);
+            this.BtnEraseSearch.Name = "BtnEraseSearch";
+            this.BtnEraseSearch.Size = new System.Drawing.Size(40, 40);
+            this.BtnEraseSearch.TabIndex = 1;
+            this.BtnEraseSearch.UseVisualStyleBackColor = true;
+            this.BtnEraseSearch.Click += new System.EventHandler(this.BtnEraseSearch_Click);
+            // 
             // TxtBoxSearch
             // 
             this.TxtBoxSearch.Location = new System.Drawing.Point(7, 20);
             this.TxtBoxSearch.Name = "TxtBoxSearch";
-            this.TxtBoxSearch.Size = new System.Drawing.Size(320, 20);
+            this.TxtBoxSearch.Size = new System.Drawing.Size(323, 20);
             this.TxtBoxSearch.TabIndex = 0;
             this.TxtBoxSearch.TextChanged += new System.EventHandler(this.TxtBoxSearch_TextChanged);
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.radioButton4);
-            this.groupBox2.Controls.Add(this.radioButton3);
-            this.groupBox2.Controls.Add(this.radioButton2);
-            this.groupBox2.Controls.Add(this.radioButton1);
-            this.groupBox2.Location = new System.Drawing.Point(12, 207);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(395, 49);
-            this.groupBox2.TabIndex = 2;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Filtrer";
-            // 
-            // radioButton4
-            // 
-            this.radioButton4.AutoSize = true;
-            this.radioButton4.Location = new System.Drawing.Point(128, 19);
-            this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(73, 17);
-            this.radioButton4.TabIndex = 3;
-            this.radioButton4.Text = "Conserver";
-            this.radioButton4.UseVisualStyleBackColor = true;
-            // 
-            // radioButton3
-            // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(326, 19);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(59, 17);
-            this.radioButton3.TabIndex = 2;
-            this.radioButton3.Text = "Vendre";
-            this.radioButton3.UseVisualStyleBackColor = true;
-            // 
-            // radioButton2
-            // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(232, 19);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(60, 17);
-            this.radioButton2.TabIndex = 1;
-            this.radioButton2.Text = "Donner";
-            this.radioButton2.UseVisualStyleBackColor = true;
-            // 
-            // radioButton1
-            // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Checked = true;
-            this.radioButton1.Location = new System.Drawing.Point(7, 19);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(92, 17);
-            this.radioButton1.TabIndex = 0;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Tous les livres";
-            this.radioButton1.UseVisualStyleBackColor = true;
             // 
             // panel1
             // 
@@ -228,7 +185,7 @@
             this.panel2.Controls.Add(this.LblNbBooksToGive);
             this.panel2.Controls.Add(this.LblNbBooksToSell);
             this.panel2.Controls.Add(this.LblNumberofBooks);
-            this.panel2.Location = new System.Drawing.Point(12, 503);
+            this.panel2.Location = new System.Drawing.Point(12, 501);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(396, 28);
             this.panel2.TabIndex = 8;
@@ -237,7 +194,7 @@
             // 
             this.LblNbBooksToRecycle.AutoSize = true;
             this.LblNbBooksToRecycle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblNbBooksToRecycle.Location = new System.Drawing.Point(310, 6);
+            this.LblNbBooksToRecycle.Location = new System.Drawing.Point(307, 6);
             this.LblNbBooksToRecycle.Name = "LblNbBooksToRecycle";
             this.LblNbBooksToRecycle.Size = new System.Drawing.Size(75, 15);
             this.LblNbBooksToRecycle.TabIndex = 15;
@@ -267,7 +224,7 @@
             // 
             this.LblNumberofBooks.AutoSize = true;
             this.LblNumberofBooks.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblNumberofBooks.Location = new System.Drawing.Point(4, 6);
+            this.LblNumberofBooks.Location = new System.Drawing.Point(10, 6);
             this.LblNumberofBooks.Name = "LblNumberofBooks";
             this.LblNumberofBooks.Size = new System.Drawing.Size(58, 15);
             this.LblNumberofBooks.TabIndex = 8;
@@ -332,7 +289,8 @@
             this.comboBoxStatut.Items.AddRange(new object[] {
             "Conserver",
             "Donner",
-            "Vendre"});
+            "Vendre",
+            "Recycler"});
             this.comboBoxStatut.Location = new System.Drawing.Point(58, 94);
             this.comboBoxStatut.Name = "comboBoxStatut";
             this.comboBoxStatut.Size = new System.Drawing.Size(163, 21);
@@ -379,22 +337,85 @@
             this.label4.TabIndex = 11;
             this.label4.Text = "Titre";
             // 
-            // BtnEraseSearch
+            // groupBox2
             // 
-            this.BtnEraseSearch.BackgroundImage = global::GestionBibliotheque.Properties.Resources.ic_backspace_128_28206;
-            this.BtnEraseSearch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.BtnEraseSearch.Location = new System.Drawing.Point(345, 12);
-            this.BtnEraseSearch.Name = "BtnEraseSearch";
-            this.BtnEraseSearch.Size = new System.Drawing.Size(40, 40);
-            this.BtnEraseSearch.TabIndex = 1;
-            this.BtnEraseSearch.UseVisualStyleBackColor = true;
-            this.BtnEraseSearch.Click += new System.EventHandler(this.BtnEraseSearch_Click);
+            this.groupBox2.Controls.Add(this.BtnRVendre);
+            this.groupBox2.Controls.Add(this.BtnRConserver);
+            this.groupBox2.Controls.Add(this.BtnRRecycler);
+            this.groupBox2.Controls.Add(this.BtnRDonner);
+            this.groupBox2.Controls.Add(this.BtnRTous);
+            this.groupBox2.Location = new System.Drawing.Point(12, 207);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(395, 49);
+            this.groupBox2.TabIndex = 2;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Filtrer";
+            // 
+            // BtnRVendre
+            // 
+            this.BtnRVendre.AutoSize = true;
+            this.BtnRVendre.Location = new System.Drawing.Point(239, 19);
+            this.BtnRVendre.Name = "BtnRVendre";
+            this.BtnRVendre.Size = new System.Drawing.Size(59, 17);
+            this.BtnRVendre.TabIndex = 4;
+            this.BtnRVendre.TabStop = true;
+            this.BtnRVendre.Text = "Vendre";
+            this.BtnRVendre.UseVisualStyleBackColor = true;
+            this.BtnRVendre.CheckedChanged += new System.EventHandler(this.BtnRVendre_CheckedChanged);
+            // 
+            // BtnRConserver
+            // 
+            this.BtnRConserver.AutoSize = true;
+            this.BtnRConserver.Location = new System.Drawing.Point(69, 19);
+            this.BtnRConserver.Name = "BtnRConserver";
+            this.BtnRConserver.Size = new System.Drawing.Size(73, 17);
+            this.BtnRConserver.TabIndex = 3;
+            this.BtnRConserver.TabStop = true;
+            this.BtnRConserver.Text = "Conserver";
+            this.BtnRConserver.UseVisualStyleBackColor = true;
+            this.BtnRConserver.CheckedChanged += new System.EventHandler(this.BtnRConserver_CheckedChanged);
+            // 
+            // BtnRRecycler
+            // 
+            this.BtnRRecycler.AutoSize = true;
+            this.BtnRRecycler.Location = new System.Drawing.Point(319, 19);
+            this.BtnRRecycler.Name = "BtnRRecycler";
+            this.BtnRRecycler.Size = new System.Drawing.Size(67, 17);
+            this.BtnRRecycler.TabIndex = 2;
+            this.BtnRRecycler.TabStop = true;
+            this.BtnRRecycler.Text = "Recycler";
+            this.BtnRRecycler.UseVisualStyleBackColor = true;
+            this.BtnRRecycler.CheckedChanged += new System.EventHandler(this.BtnRRecycler_CheckedChanged);
+            // 
+            // BtnRDonner
+            // 
+            this.BtnRDonner.AutoSize = true;
+            this.BtnRDonner.Location = new System.Drawing.Point(159, 19);
+            this.BtnRDonner.Name = "BtnRDonner";
+            this.BtnRDonner.Size = new System.Drawing.Size(60, 17);
+            this.BtnRDonner.TabIndex = 1;
+            this.BtnRDonner.TabStop = true;
+            this.BtnRDonner.Text = "Donner";
+            this.BtnRDonner.UseVisualStyleBackColor = true;
+            this.BtnRDonner.CheckedChanged += new System.EventHandler(this.BtnRDonner_CheckedChanged);
+            // 
+            // BtnRTous
+            // 
+            this.BtnRTous.AutoSize = true;
+            this.BtnRTous.Location = new System.Drawing.Point(7, 19);
+            this.BtnRTous.Name = "BtnRTous";
+            this.BtnRTous.Size = new System.Drawing.Size(49, 17);
+            this.BtnRTous.TabIndex = 0;
+            this.BtnRTous.TabStop = true;
+            this.BtnRTous.Text = "Tous";
+            this.BtnRTous.UseVisualStyleBackColor = true;
+            this.BtnRTous.CheckedChanged += new System.EventHandler(this.BtnRTous_CheckedChanged);
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(417, 538);
+            this.ClientSize = new System.Drawing.Size(421, 538);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
@@ -407,13 +428,13 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -422,9 +443,6 @@
 
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.GroupBox groupBox3;
@@ -434,8 +452,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox comboBoxStatut;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.RadioButton radioButton4;
-        private System.Windows.Forms.RadioButton radioButton3;
         private System.Windows.Forms.Button BtnAddBook;
         private System.Windows.Forms.Button BtnDeleteBook;
         private System.Windows.Forms.Button BtnKeepBook;
@@ -450,5 +466,11 @@
         private System.Windows.Forms.Button BtnApplyBookModification;
         private System.Windows.Forms.Button BtnClearTextboxes;
         private System.Windows.Forms.Button BtnEraseSearch;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.RadioButton BtnRVendre;
+        private System.Windows.Forms.RadioButton BtnRConserver;
+        private System.Windows.Forms.RadioButton BtnRRecycler;
+        private System.Windows.Forms.RadioButton BtnRDonner;
+        private System.Windows.Forms.RadioButton BtnRTous;
     }
 }

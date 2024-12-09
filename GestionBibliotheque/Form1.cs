@@ -71,8 +71,8 @@ namespace GestionBibliotheque
             // compteur du nombre de livres à recycler dans la bibliothèque
             LblNbBooksToRecycle.Text = "A recycler : " + ListeLivres.Count(livre => livre.GetStatut() == "Recycler").ToString();
 
-            // forcer la listbox à rester sur la ligne sélectionnée après la mise à jour
-            listBox1.SelectedIndex = currentIndex;
+            // désélectionner la ligne sélectionnée après la mise à jour et supprimer les filtres
+            listBox1.SelectedIndex = -1;
             BtnRConserver.Checked = false;
             BtnRDonner.Checked = false;
             BtnRVendre.Checked = false;
@@ -207,7 +207,7 @@ namespace GestionBibliotheque
                 string unTitre = textBoxTitre.Text;
                 string unAuteur = textBoxAuteur.Text;
                 string unStatut = comboBoxStatut.SelectedItem.ToString();
-                Livre unLivre = ListeLivres[listBox1.SelectedIndex];
+                Livre unLivre = ListeLivres[RecupIndexListeLivres()];
                 unLivre.SetAuteur(textBoxAuteur.Text);
                 unLivre.SetTitre(textBoxTitre.Text);
                 unLivre.SetStatut(comboBoxStatut.Text);
@@ -220,6 +220,7 @@ namespace GestionBibliotheque
             // quand aucune ligne n'est sélectionnée, ne rien afficher
             if (listBox1.SelectedIndex == -1)
             {
+                BtnAddBook.Enabled = true;
                 textBoxAuteur.Clear();
                 textBoxTitre.Clear();
                 comboBoxStatut.SelectedIndex = 0;
@@ -228,6 +229,7 @@ namespace GestionBibliotheque
             // quand une ligne est sélectionnée, remplir les textbox avec les informations du livre sélectionné à partir de ListeLivres
             if (listBox1.SelectedIndex != -1)
             {
+                BtnAddBook.Enabled = false;
                 Livre unLivre = ListeLivres[RecupIndexListeLivres()];
                 textBoxAuteur.Text = unLivre.GetAuteur().ToString();
                 textBoxTitre.Text = unLivre.GetTitre().ToString();
@@ -240,6 +242,7 @@ namespace GestionBibliotheque
             textBoxTitre.Clear();
             textBoxAuteur.Clear();
             comboBoxStatut.SelectedIndex = 0;
+            listBox1.SelectedIndex = -1;
         }
 
         private void TxtBoxSearch_TextChanged(object sender, EventArgs e)
@@ -268,11 +271,6 @@ namespace GestionBibliotheque
             }
         }
 
-        private void BtnEraseSearch_Click(object sender, EventArgs e)
-        {
-            TxtBoxSearch.Clear();
-        }
-
         private void BtnRDonner_CheckedChanged(object sender, EventArgs e)
         {
             if(BtnRDonner.Checked == true)
@@ -287,6 +285,7 @@ namespace GestionBibliotheque
                 }
                 listBox1.DataSource = ListeFiltreLivres;
             }
+            listBox1.SelectedIndex = -1;
         }
 
         private void BtnRConserver_CheckedChanged(object sender, EventArgs e)
@@ -303,6 +302,7 @@ namespace GestionBibliotheque
                 }
                 listBox1.DataSource = ListeFiltreLivres;
             }
+            listBox1.SelectedIndex = -1;
         }
 
         private void BtnRVendre_CheckedChanged(object sender, EventArgs e)
@@ -319,6 +319,7 @@ namespace GestionBibliotheque
                 }
                 listBox1.DataSource = ListeFiltreLivres;
             }
+            listBox1.SelectedIndex = -1;
         }
 
         private void BtnRRecycler_CheckedChanged(object sender, EventArgs e)
@@ -335,6 +336,7 @@ namespace GestionBibliotheque
                 }
                 listBox1.DataSource = ListeFiltreLivres;
             }
+            listBox1.SelectedIndex = -1;
         }
 
         private void BtnClearFilters_Click(object sender, EventArgs e)
@@ -344,7 +346,6 @@ namespace GestionBibliotheque
             BtnRVendre.Checked = false;
             BtnRRecycler.Checked = false;
             TxtBoxSearch.Clear();
-
             MajListeLivres();
         }
 

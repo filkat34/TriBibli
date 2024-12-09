@@ -83,6 +83,16 @@ namespace GestionBibliotheque.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _256px_Icons8_flat_clear_filters_svg {
+            get {
+                object obj = ResourceManager.GetObject("256px-Icons8_flat_clear_filters.svg", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Accept_37154 {
             get {
                 object obj = ResourceManager.GetObject("Accept_37154", resourceCulture);

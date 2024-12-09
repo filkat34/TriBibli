@@ -133,5 +133,8 @@
   <ItemGroup>
     <None Include="Resources\ic_backspace_128_28206.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\256px-Icons8_flat_clear_filters.svg.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

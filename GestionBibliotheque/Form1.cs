@@ -251,6 +251,7 @@ namespace GestionBibliotheque
             if (listBox1.SelectedIndex != -1)
             {
                 BtnAddBook.Enabled = false;
+                BtnApplyBookModification.Enabled = true;
                 Livre unLivre = ListeLivres[RecupIndexListeLivres()];
                 textBoxAuteur.Text = unLivre.GetAuteur().ToString();
                 textBoxTitre.Text = unLivre.GetTitre().ToString();
@@ -278,34 +279,42 @@ namespace GestionBibliotheque
 
         private void TxtBoxSearch_TextChanged(object sender, EventArgs e)
         {
+            List<Livre> ListeFiltreLivres = new List<Livre>();
+            listBox1.DataSource = null;
+            ListeFiltreLivres.Clear();
             // quand textbox remplie boucler dans la collection pour trouver le livre recherché
             if (string.IsNullOrEmpty(TxtBoxSearch.Text) == false)
             {
                 MajListeLivres();
-                foreach (Livre livre in ListeLivres)
                 {
-                    string auteur = livre.GetAuteur().ToString();
-                    string titre = livre.GetTitre().ToString();
-
-                    if (auteur.ToLower().Contains(TxtBoxSearch.Text.ToLower()) | titre.ToLower().Contains(TxtBoxSearch.Text.ToLower()))
+                    foreach (Livre livre in ListeLivres)
                     {
-                        int index = ListeLivres.IndexOf(livre);
-                        listBox1.SelectedIndex = index;
+                        string auteur = livre.GetAuteur().ToString();
+                        string titre = livre.GetTitre().ToString();
+
+                        if (auteur.ToLower().Contains(TxtBoxSearch.Text.ToLower()) | titre.ToLower().Contains(TxtBoxSearch.Text.ToLower()))
+                        {
+                            ListeFiltreLivres.Add(livre);
+                        }
+             
                     }
+                    listBox1.DataSource = ListeFiltreLivres;
                 }
+                listBox1.SelectedIndex = -1;
             }
 
             if (TxtBoxSearch.Text == "")
             {
                 MajListeLivres();
-                listBox1.SelectedIndex = -1;
             }
+
         }
 
         private void BtnRDonner_CheckedChanged(object sender, EventArgs e)
         {
-            if(BtnRDonner.Checked == true)
+            if (BtnRDonner.Checked == true)
             {
+                TxtBoxSearch.Clear();
                 List<Livre> ListeFiltreLivres = new List<Livre>();
                 foreach (Livre livre in ListeLivres)
                 {
@@ -323,6 +332,7 @@ namespace GestionBibliotheque
         {
             if (BtnRConserver.Checked == true)
             {
+                TxtBoxSearch.Clear();
                 List<Livre> ListeFiltreLivres = new List<Livre>();
                 foreach (Livre livre in ListeLivres)
                 {
@@ -340,6 +350,7 @@ namespace GestionBibliotheque
         {
             if (BtnRVendre.Checked == true)
             {
+                TxtBoxSearch.Clear();
                 List<Livre> ListeFiltreLivres = new List<Livre>();
                 foreach (Livre livre in ListeLivres)
                 {
@@ -357,6 +368,7 @@ namespace GestionBibliotheque
         {
             if (BtnRRecycler.Checked == true)
             {
+                TxtBoxSearch.Clear();
                 List<Livre> ListeFiltreLivres = new List<Livre>();
                 foreach (Livre livre in ListeLivres)
                 {

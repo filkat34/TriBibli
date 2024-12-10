@@ -240,14 +240,14 @@ namespace GestionBibliotheque
             textBoxAuteur.Clear();
             textBoxTitre.Clear();
 
-            // quand aucune ligne n'est sélectionnée, ne rien afficher
+            // quand aucune ligne n'est sélectionnée, ne pas afficher les informations de l'objet dans les textboxes
             if (listBox1.SelectedIndex == -1)
             {
                 BtnAddBook.Enabled = true;
                 comboBoxStatut.SelectedIndex = 0;
             }
 
-            // quand une ligne est sélectionnée, remplir les textbox avec les informations du livre sélectionné à partir de ListeLivres
+            // quand une ligne est sélectionnée, remplir les textboxes avec les informations du livre sélectionné à partir de ListeLivres
             if (listBox1.SelectedIndex != -1)
             {
                 BtnAddBook.Enabled = false;
@@ -255,6 +255,16 @@ namespace GestionBibliotheque
                 textBoxAuteur.Text = unLivre.GetAuteur().ToString();
                 textBoxTitre.Text = unLivre.GetTitre().ToString();
                 comboBoxStatut.Text = unLivre.GetStatut().ToString();
+            }
+
+            //quand plusieurs lignes sont sélectionnées, ne pas afficher les informations de l'objet dans les textboxes
+            if (listBox1.SelectedIndices.Count > 1)
+            {
+                textBoxAuteur.Clear();
+                textBoxTitre.Clear();
+                BtnAddBook.Enabled = false;
+                BtnApplyBookModification.Enabled = false;
+                comboBoxStatut.SelectedIndex = 0;
             }
         }
 

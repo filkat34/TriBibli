@@ -33,6 +33,12 @@ namespace GestionBibliotheque
             // positionner le combobox par défaut sur "Conserver"
             comboBoxStatut.SelectedIndex = 0;
 
+            // désactiver tous les boutons radio
+            BtnRConserver.Checked = false;
+            BtnRDonner.Checked = false;
+            BtnRVendre.Checked = false;
+            BtnRRecycler.Checked = false;
+
             // récupérer la sauvegarde des contacts, si elle existe
             Object recupLivres = Serialise.Recup(nomFic);
             if (recupLivres != null)
@@ -68,12 +74,8 @@ namespace GestionBibliotheque
             // compteur du nombre de livres à recycler dans la bibliothèque
             LblNbBooksToRecycle.Text = "A recycler : " + ListeLivres.Count(livre => livre.GetStatut() == "Recycler").ToString();
 
-            // désélectionner la ligne sélectionnée après la mise à jour et supprimer les filtres
+            // désélectionner la ligne sélectionnée après la mise à jour
             listBox1.SelectedIndex = -1;
-            BtnRConserver.Checked = false;
-            BtnRDonner.Checked = false;
-            BtnRVendre.Checked = false;
-            BtnRRecycler.Checked = false;
         }
 
         private int RecupIndexListeLivres()
@@ -98,7 +100,7 @@ namespace GestionBibliotheque
 
         private void ChangeStatutLivreSelectionnes(string statut)
         {
-            //Change le statut d'un ou plusieurs livres sélectionnés
+            //Change le statut d'un ou plusieurs livres sélectionnés dans la collection
             if (listBox1.SelectedIndex != -1)
             {
                 for (int i = listBox1.SelectedIndices.Count - 1; i >= 0; i--)
@@ -286,6 +288,10 @@ namespace GestionBibliotheque
             if (string.IsNullOrEmpty(TxtBoxSearch.Text) == false)
             {
                 MajListeLivres();
+                BtnRConserver.Checked = false;
+                BtnRDonner.Checked = false;
+                BtnRVendre.Checked = false;
+                BtnRRecycler.Checked = false;
                 {
                     foreach (Livre livre in ListeLivres)
                     {

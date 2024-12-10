@@ -62,25 +62,23 @@ namespace GestionBibliotheque
             // sauvegarder la liste dans le fichier
             Serialise.Sauve(nomFic, ListeLivres);
 
-            // compteur du nombre de livres dans la bibliothèque
+            // compteurs du nombre de livres
             LblNumberofBooks.Text = "Livres : " + ListeLivres.Count.ToString();
-
-            // compteur du nombre de livres à vendre dans la bibliothèque
             LblNbBooksToSell.Text = "A vendre : " + ListeLivres.Count(livre => livre.GetStatut() == "Vendre").ToString();
-
-            // compteur du nombre de livres à donner dans la bibliothèque
             LblNbBooksToGive.Text = "A donner : " + ListeLivres.Count(livre => livre.GetStatut() == "Donner").ToString();
-
-            // compteur du nombre de livres à recycler dans la bibliothèque
             LblNbBooksToRecycle.Text = "A recycler : " + ListeLivres.Count(livre => livre.GetStatut() == "Recycler").ToString();
 
-            // désélectionner la ligne sélectionnée après la mise à jour
+            // désélectionner la ligne sélectionnée après la mise à jour et désactiver les boutons radio
             listBox1.SelectedIndex = -1;
+            BtnRConserver.Checked = false;
+            BtnRDonner.Checked = false;
+            BtnRVendre.Checked = false;
+            BtnRRecycler.Checked = false;
         }
 
         private int RecupIndexListeLivres()
         {
-            // récupère a partir de l'index listbox l'indice de l'objet dans la collection
+            // récupère a partir de l'index listbox l'indice d'un seul livre sélectionné dans la collection
             int index = 0 ;
 
             if (listBox1.SelectedIndex != -1)
@@ -120,7 +118,6 @@ namespace GestionBibliotheque
                     }
                 }
                 MajListeLivres();
-
             }
         }
 
@@ -158,7 +155,7 @@ namespace GestionBibliotheque
                         ListeLivres.Add(nouvLivre);
                     }
                 }
-                // vide le contenu des textbox
+                // vide le contenu des textboxes
                 textBoxTitre.Clear();
                 textBoxAuteur.Clear();
                 listBox1.SelectedIndex = -1;
@@ -170,7 +167,7 @@ namespace GestionBibliotheque
 
         private void BtnDeleteBook_Click(object sender, EventArgs e)
         {
-            // Supprime les livre sélectionnés de la collection
+            // Supprime les livres sélectionnés de la collection
             List<int> indicesLivresASupprimer = new List<int>();
             int index = 0;
             if (listBox1.SelectedIndex != -1)
@@ -233,7 +230,7 @@ namespace GestionBibliotheque
                 string unAuteur = textBoxAuteur.Text;
                 string unStatut = comboBoxStatut.SelectedItem.ToString();
                 Livre unLivre = ListeLivres[RecupIndexListeLivres()];
-                unLivre.SetAuteur(textBoxAuteur.Text);
+                unLivre.SetAuteur(textBoxAuteur.Text.ToUpper());
                 unLivre.SetTitre(textBoxTitre.Text);
                 unLivre.SetStatut(comboBoxStatut.Text);
                 MajListeLivres();
@@ -296,6 +293,7 @@ namespace GestionBibliotheque
             List<Livre> ListeFiltreLivres = new List<Livre>();
             listBox1.DataSource = null;
             ListeFiltreLivres.Clear();
+
             // quand textbox remplie boucler dans la collection pour trouver le livre recherché
             if (string.IsNullOrEmpty(TxtBoxSearch.Text) == false)
             {
@@ -314,7 +312,6 @@ namespace GestionBibliotheque
                         {
                             ListeFiltreLivres.Add(livre);
                         }
-             
                     }
                     listBox1.DataSource = ListeFiltreLivres;
                 }
@@ -325,23 +322,28 @@ namespace GestionBibliotheque
             {
                 MajListeLivres();
             }
+        }
 
+        private void FiltrerLivresStatut(string statut)
+        {
+            // filtrer les livres selon leur statut
+            List<Livre> ListeFiltreLivres = new List<Livre>();
+            foreach (Livre livre in ListeLivres)
+            {
+                if (livre.GetStatut() == statut)
+                {
+                    ListeFiltreLivres.Add(livre);
+                }
+            }
+            listBox1.DataSource = ListeFiltreLivres;
+            listBox1.SelectedIndex = -1;
         }
 
         private void BtnRDonner_CheckedChanged(object sender, EventArgs e)
         {
             if (BtnRDonner.Checked == true)
             {
-                TxtBoxSearch.Clear();
-                List<Livre> ListeFiltreLivres = new List<Livre>();
-                foreach (Livre livre in ListeLivres)
-                {
-                    if (livre.GetStatut() == "Donner")
-                    {
-                        ListeFiltreLivres.Add(livre);
-                    }
-                }
-                listBox1.DataSource = ListeFiltreLivres;
+                FiltrerLivresStatut("Donner");
             }
             listBox1.SelectedIndex = -1;
         }
@@ -350,16 +352,7 @@ namespace GestionBibliotheque
         {
             if (BtnRConserver.Checked == true)
             {
-                TxtBoxSearch.Clear();
-                List<Livre> ListeFiltreLivres = new List<Livre>();
-                foreach (Livre livre in ListeLivres)
-                {
-                    if (livre.GetStatut() == "Conserver")
-                    {
-                        ListeFiltreLivres.Add(livre);
-                    }
-                }
-                listBox1.DataSource = ListeFiltreLivres;
+                FiltrerLivresStatut("Conserver");
             }
             listBox1.SelectedIndex = -1;
         }
@@ -368,16 +361,7 @@ namespace GestionBibliotheque
         {
             if (BtnRVendre.Checked == true)
             {
-                TxtBoxSearch.Clear();
-                List<Livre> ListeFiltreLivres = new List<Livre>();
-                foreach (Livre livre in ListeLivres)
-                {
-                    if (livre.GetStatut() == "Vendre")
-                    {
-                        ListeFiltreLivres.Add(livre);
-                    }
-                }
-                listBox1.DataSource = ListeFiltreLivres;
+                FiltrerLivresStatut("Vendre");
             }
             listBox1.SelectedIndex = -1;
         }
@@ -386,16 +370,7 @@ namespace GestionBibliotheque
         {
             if (BtnRRecycler.Checked == true)
             {
-                TxtBoxSearch.Clear();
-                List<Livre> ListeFiltreLivres = new List<Livre>();
-                foreach (Livre livre in ListeLivres)
-                {
-                    if (livre.GetStatut() == "Recycler")
-                    {
-                        ListeFiltreLivres.Add(livre);
-                    }
-                }
-                listBox1.DataSource = ListeFiltreLivres;
+                FiltrerLivresStatut("Recycler");
             }
             listBox1.SelectedIndex = -1;
         }

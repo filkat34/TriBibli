@@ -126,43 +126,46 @@ namespace GestionBibliotheque
 
         private void BtnAddBook_Click(object sender, EventArgs e)
         {
-            // création d'un nouvel objet livre à ajouter
-            string unTitre = textBoxTitre.Text;
-            string unAuteur = textBoxAuteur.Text.ToUpper();
-            string unStatut = comboBoxStatut.SelectedItem.ToString();
-            Livre nouvLivre = new Livre(unTitre, unAuteur, unStatut);
-            bool unDoublon = false;
-
-            // vérification que le livre n'existe pas déjà dans la collection
-            foreach(Livre livre in ListeLivres)
+            if (string.IsNullOrEmpty(textBoxAuteur.Text) == false & string.IsNullOrEmpty(textBoxTitre.Text) == false) 
             {
-                if (livre.GetAuteur().ToLower() == nouvLivre.GetAuteur().ToLower() && livre.GetTitre().ToLower() == nouvLivre.GetTitre().ToLower())
+                // création d'un nouvel objet livre à ajouter
+                string unTitre = textBoxTitre.Text;
+                string unAuteur = textBoxAuteur.Text.ToUpper();
+                string unStatut = comboBoxStatut.SelectedItem.ToString();
+                Livre nouvLivre = new Livre(unTitre, unAuteur, unStatut);
+                bool unDoublon = false;
+
+                // vérification que le livre n'existe pas déjà dans la collection
+                foreach(Livre livre in ListeLivres)
                 {
-                    unDoublon = true;
+                    if (livre.GetAuteur().ToLower() == nouvLivre.GetAuteur().ToLower() && livre.GetTitre().ToLower() == nouvLivre.GetTitre().ToLower())
+                    {
+                        unDoublon = true;
+                    }
                 }
-            }
 
-            // ajout du livre s'il ne s'agit pas d'un doublon
-            if (unDoublon == false)
-            {
-                ListeLivres.Add(nouvLivre);
-            }
-
-            else
-            {
-                // demande à l'utilisateur s'il souhaite ajouter un doublon
-                if (MessageBox.Show("Un livre du même auteur et ayant le même titre est déjà présent dans votre bibliothèque. Voulez-vous vraiment ajouter ce livre ?", "Confirmation", MessageBoxButtons.YesNo) == (DialogResult.Yes))
+                // ajout du livre s'il ne s'agit pas d'un doublon
+                if (unDoublon == false)
                 {
                     ListeLivres.Add(nouvLivre);
                 }
-            }
-            // vide le contenu des textbox
-            textBoxTitre.Clear();
-            textBoxAuteur.Clear();
-            listBox1.SelectedIndex = -1;
 
-            // mise à jour de la listbox
-            MajListeLivres();
+                else
+                {
+                    // demande à l'utilisateur s'il souhaite ajouter un doublon
+                    if (MessageBox.Show("Un livre du même auteur et ayant le même titre est déjà présent dans votre bibliothèque. Voulez-vous vraiment ajouter ce livre ?", "Confirmation", MessageBoxButtons.YesNo) == (DialogResult.Yes))
+                    {
+                        ListeLivres.Add(nouvLivre);
+                    }
+                }
+                // vide le contenu des textbox
+                textBoxTitre.Clear();
+                textBoxAuteur.Clear();
+                listBox1.SelectedIndex = -1;
+
+                // mise à jour de la listbox
+                MajListeLivres();
+            }
         }
 
         private void BtnDeleteBook_Click(object sender, EventArgs e)

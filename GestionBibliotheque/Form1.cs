@@ -175,7 +175,7 @@ namespace GestionBibliotheque
             int index = 0;
             if (listBox1.SelectedIndex != -1)
             {
-                if (MessageBox.Show("Voulez-vous vraiment supprimer ce(s) livre(s) ?", "Confirmation", MessageBoxButtons.YesNo) == (DialogResult.Yes))
+                if (MessageBox.Show($"Voulez-vous vraiment supprimer {listBox1.SelectedItems.Count} livre(s) de votre bibliothèque ?", "Confirmation", MessageBoxButtons.YesNo) == (DialogResult.Yes))
                 {
                     for (int i = listBox1.SelectedIndices.Count - 1; i >= 0; i--)
                     {
@@ -194,10 +194,10 @@ namespace GestionBibliotheque
                     foreach(int indice in indicesLivresASupprimer)
                     {
                         ListeLivres.RemoveAt(indice);
-                    } 
+                    }
+                    MajListeLivres();
                 }
             }
-            MajListeLivres();
         }
         
         private void BtnKeepBook_Click(object sender, EventArgs e)
@@ -248,6 +248,9 @@ namespace GestionBibliotheque
             // quand aucune ligne n'est sélectionnée, ne pas afficher les informations de l'objet dans les textboxes
             if (listBox1.SelectedIndex == -1)
             {
+                textBoxAuteur.Enabled = true;
+                textBoxTitre.Enabled = true;
+                comboBoxStatut.Enabled = true;
                 BtnAddBook.Enabled = true;
                 comboBoxStatut.SelectedIndex = 0;
             }
@@ -255,6 +258,9 @@ namespace GestionBibliotheque
             // quand une ligne est sélectionnée, remplir les textboxes avec les informations du livre sélectionné à partir de ListeLivres
             if (listBox1.SelectedIndex != -1)
             {
+                textBoxAuteur.Enabled = true;
+                textBoxTitre.Enabled = true;
+                comboBoxStatut.Enabled = true;
                 BtnAddBook.Enabled = false;
                 BtnApplyBookModification.Enabled = true;
                 Livre unLivre = ListeLivres[RecupIndexListeLivres()];
@@ -268,6 +274,9 @@ namespace GestionBibliotheque
             {
                 textBoxAuteur.Clear();
                 textBoxTitre.Clear();
+                textBoxAuteur.Enabled = false;
+                textBoxTitre.Enabled = false;
+                comboBoxStatut.Enabled = false;
                 BtnAddBook.Enabled = false;
                 BtnApplyBookModification.Enabled = false;
                 comboBoxStatut.SelectedIndex = 0;

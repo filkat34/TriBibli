@@ -18,4 +18,5 @@ Ce programme vous permet de :
 
 ## Prise en main 
 
-Vous pouvez utiliser ce programme en téléchargeant le dossier "Release" et en exécutant l'application "GestionBibliothèque". Les livres de votre bibliothèque sont sauvegardés dans le même dossier dans le fichier "sauvLivres".
+Vous pouvez utiliser ce programme en téléchargeant le dossier "Release x64" et en exécutant l'application "GestionBibliothèque". 
+Les livres de votre bibliothèque sont sauvegardés dans le même dossier dans le fichier "sauvLivres".

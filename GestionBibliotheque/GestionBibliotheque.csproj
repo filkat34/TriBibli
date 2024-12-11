@@ -80,6 +80,8 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="bin\x64\Release\GestionBibliotheque.exe.config" />
+    <None Include="bin\x64\Release\sauvLivres" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -148,6 +150,7 @@
     <None Include="Resources\256px-Icons8_flat_clear_filters.svg.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="bin\x64\Release\GestionBibliotheque.exe" />
     <Content Include="education_books_library_icon_149685.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -63,10 +63,12 @@ namespace GestionBibliotheque
             Serialise.Sauve(nomFic, ListeLivres);
 
             // compteurs du nombre de livres
-            LblNumberofBooks.Text = "Livres : " + ListeLivres.Count.ToString();
-            LblNbBooksToSell.Text = "A vendre : " + ListeLivres.Count(livre => livre.GetStatut() == "Vendre").ToString();
-            LblNbBooksToGive.Text = "A donner : " + ListeLivres.Count(livre => livre.GetStatut() == "Donner").ToString();
-            LblNbBooksToRecycle.Text = "A recycler : " + ListeLivres.Count(livre => livre.GetStatut() == "Recycler").ToString();
+            LblNumberofBooks.Text = "Livres : " + ListeLivres.Count.ToString() + 
+                "        Conserver : " + ListeLivres.Count(livre => livre.GetStatut() == "Conserver").ToString() +
+                "        Vendre : " + ListeLivres.Count(livre => livre.GetStatut() == "Vendre").ToString() +
+                "        Donner : " + ListeLivres.Count(livre => livre.GetStatut() == "Donner").ToString() +
+                "        Recycler : " + ListeLivres.Count(livre => livre.GetStatut() == "Recycler").ToString();
+
 
             // désélectionner la ligne sélectionnée après la mise à jour et désactiver les boutons radio
             listBox1.SelectedIndex = -1;
@@ -423,12 +425,17 @@ namespace GestionBibliotheque
 
         private void BtnClearTextboxes_MouseHover(object sender, EventArgs e)
         {
-            toolTip8.Show("Effacer les champs Nom et Titre", BtnClearTextboxes);
+            toolTip8.Show("Effacer les champs Auteur(Nom) et Titre", BtnClearTextboxes);
         }
 
         private void BtnClearFilters_MouseHover(object sender, EventArgs e)
         {
             toolTip9.Show("Supprimer tous les filtres", BtnClearFilters);
+        }
+
+        private void LblNbBooksToKeep_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

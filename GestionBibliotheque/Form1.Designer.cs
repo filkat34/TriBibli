@@ -39,10 +39,6 @@
             this.BtnDeleteBook = new System.Windows.Forms.Button();
             this.BtnGiveBook = new System.Windows.Forms.Button();
             this.BtnKeepBook = new System.Windows.Forms.Button();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.LblNbBooksToRecycle = new System.Windows.Forms.Label();
-            this.LblNbBooksToGive = new System.Windows.Forms.Label();
-            this.LblNbBooksToSell = new System.Windows.Forms.Label();
             this.LblNumberofBooks = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.BtnClearTextboxes = new System.Windows.Forms.Button();
@@ -71,7 +67,6 @@
             this.toolTip9 = new System.Windows.Forms.ToolTip(this.components);
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -181,53 +176,11 @@
             this.BtnKeepBook.Click += new System.EventHandler(this.BtnKeepBook_Click);
             this.BtnKeepBook.MouseHover += new System.EventHandler(this.BtnKeepBook_MouseHover);
             // 
-            // panel2
-            // 
-            this.panel2.CausesValidation = false;
-            this.panel2.Controls.Add(this.LblNbBooksToRecycle);
-            this.panel2.Controls.Add(this.LblNbBooksToGive);
-            this.panel2.Controls.Add(this.LblNbBooksToSell);
-            this.panel2.Controls.Add(this.LblNumberofBooks);
-            this.panel2.Location = new System.Drawing.Point(12, 501);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(396, 28);
-            this.panel2.TabIndex = 8;
-            // 
-            // LblNbBooksToRecycle
-            // 
-            this.LblNbBooksToRecycle.AutoSize = true;
-            this.LblNbBooksToRecycle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblNbBooksToRecycle.Location = new System.Drawing.Point(307, 6);
-            this.LblNbBooksToRecycle.Name = "LblNbBooksToRecycle";
-            this.LblNbBooksToRecycle.Size = new System.Drawing.Size(75, 15);
-            this.LblNbBooksToRecycle.TabIndex = 15;
-            this.LblNbBooksToRecycle.Text = "A recycler : 0";
-            // 
-            // LblNbBooksToGive
-            // 
-            this.LblNbBooksToGive.AutoSize = true;
-            this.LblNbBooksToGive.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblNbBooksToGive.Location = new System.Drawing.Point(202, 6);
-            this.LblNbBooksToGive.Name = "LblNbBooksToGive";
-            this.LblNbBooksToGive.Size = new System.Drawing.Size(72, 15);
-            this.LblNbBooksToGive.TabIndex = 13;
-            this.LblNbBooksToGive.Text = "A donner : 0";
-            // 
-            // LblNbBooksToSell
-            // 
-            this.LblNbBooksToSell.AutoSize = true;
-            this.LblNbBooksToSell.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblNbBooksToSell.Location = new System.Drawing.Point(99, 6);
-            this.LblNbBooksToSell.Name = "LblNbBooksToSell";
-            this.LblNbBooksToSell.Size = new System.Drawing.Size(70, 15);
-            this.LblNbBooksToSell.TabIndex = 12;
-            this.LblNbBooksToSell.Text = "A vendre : 0";
-            // 
             // LblNumberofBooks
             // 
             this.LblNumberofBooks.AutoSize = true;
             this.LblNumberofBooks.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblNumberofBooks.Location = new System.Drawing.Point(10, 6);
+            this.LblNumberofBooks.Location = new System.Drawing.Point(12, 504);
             this.LblNumberofBooks.Name = "LblNumberofBooks";
             this.LblNumberofBooks.Size = new System.Drawing.Size(58, 15);
             this.LblNumberofBooks.TabIndex = 8;
@@ -418,13 +371,49 @@
             this.BtnRDonner.UseVisualStyleBackColor = true;
             this.BtnRDonner.CheckedChanged += new System.EventHandler(this.BtnRDonner_CheckedChanged);
             // 
+            // toolTip1
+            // 
+            this.toolTip1.ToolTipTitle = "Conserver";
+            // 
+            // toolTip2
+            // 
+            this.toolTip2.ToolTipTitle = "Donner";
+            // 
+            // toolTip3
+            // 
+            this.toolTip3.ToolTipTitle = "Vendre";
+            // 
+            // toolTip4
+            // 
+            this.toolTip4.ToolTipTitle = "Recycler";
+            // 
+            // toolTip5
+            // 
+            this.toolTip5.ToolTipTitle = "Supprimer";
+            // 
+            // toolTip6
+            // 
+            this.toolTip6.ToolTipTitle = "Ajouter";
+            // 
+            // toolTip7
+            // 
+            this.toolTip7.ToolTipTitle = "Modifier";
+            // 
+            // toolTip8
+            // 
+            this.toolTip8.ToolTipTitle = "Effacer";
+            // 
+            // toolTip9
+            // 
+            this.toolTip9.ToolTipTitle = "Supprimer les filtres";
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(421, 538);
+            this.Controls.Add(this.LblNumberofBooks);
             this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -437,13 +426,12 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.panel1.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -452,7 +440,6 @@
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.TextBox textBoxTitre;
         private System.Windows.Forms.TextBox textBoxAuteur;
@@ -467,9 +454,6 @@
         private System.Windows.Forms.Button BtnBookSell;
         private System.Windows.Forms.Label LblNumberofBooks;
         private System.Windows.Forms.Button BtnRecycleBook;
-        private System.Windows.Forms.Label LblNbBooksToSell;
-        private System.Windows.Forms.Label LblNbBooksToGive;
-        private System.Windows.Forms.Label LblNbBooksToRecycle;
         private System.Windows.Forms.TextBox TxtBoxSearch;
         private System.Windows.Forms.Button BtnApplyBookModification;
         private System.Windows.Forms.Button BtnClearTextboxes;

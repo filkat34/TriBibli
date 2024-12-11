@@ -14,7 +14,7 @@ Ce programme vous permet de :
 * rechercher un livre dans votre collection par son nom d'auteur ou par son titre ;
 * modifier les informations d'un livre que vous avez déjà sauvegardé ;
 * supprimer un livre de votre bibliothèque;
-* afficher des statistiques de votre bibliothèque : nombre total de livres, livres à conserver, donner, vendre, recycler.
+* afficher des statistiques de votre bibliothèque : nombre total de livres, de livres à conserver, donner, vendre, recycler.
 
 ## Prise en main 
 

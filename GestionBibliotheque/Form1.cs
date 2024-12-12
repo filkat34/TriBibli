@@ -1,18 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Drawing.Text;
 using System.Linq;
-using System.Net.NetworkInformation;
-using System.Reflection;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace GestionBibliotheque
 {
@@ -431,11 +421,6 @@ namespace GestionBibliotheque
         private void BtnClearFilters_MouseHover(object sender, EventArgs e)
         {
             toolTip9.Show("Supprimer tous les filtres", BtnClearFilters);
-        }
-
-        private void LblNbBooksToKeep_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

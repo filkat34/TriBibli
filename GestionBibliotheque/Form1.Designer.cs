@@ -420,6 +420,9 @@
             this.Controls.Add(this.listBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(437, 577);
+            this.MinimumSize = new System.Drawing.Size(437, 577);
             this.Name = "Main";
             this.Text = "Gestionnaire de bibliothèque";
             this.Load += new System.EventHandler(this.Form1_Load);

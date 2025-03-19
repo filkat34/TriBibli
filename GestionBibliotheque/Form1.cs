@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -11,12 +12,19 @@ namespace GestionBibliotheque
         // création de la collection de livres
         private List<Livre> ListeLivres = new List<Livre>();
 
+
         // nom du fichier de sérialisation
         private String nomFic = "sauvLivres";
+
+        //dossier de sérialisation
+        string dossierSauvegarde = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "TriBibli"); 
+        
 
         public Main()
         {
             InitializeComponent();
+            Directory.CreateDirectory(dossierSauvegarde);
+            nomFic = Path.Combine(dossierSauvegarde, "sauvLivres.dat");
         }
         private void Form1_Load(object sender, EventArgs e)
         {

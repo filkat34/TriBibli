@@ -17,7 +17,7 @@ namespace GestionBibliotheque
         private String nomFic = "sauvLivres";
 
         //dossier de sérialisation
-        string dossierSauvegarde = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "TriBibli"); 
+        string dossierSauvegarde = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "TriBibli"); 
         
 
         public Main()
